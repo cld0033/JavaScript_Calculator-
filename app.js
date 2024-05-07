@@ -1,5 +1,6 @@
-let count1 = 0;
+//let count1 = 0;
 let operator = '';
+//let count2 = 0;
 
 function add(x) {
   count1 += x;
@@ -12,7 +13,7 @@ function multiply(x) {
 }
 
 function sub(x) {
-  count1 -= num;
+  count1 -= x;
   return count1;
 }
 
@@ -22,7 +23,7 @@ function div(x) {
 }
 
 function operate(start, operator, num) {
-  count1 = start;
+  result = start;
   switch (operator) {
     case '+':
       add(num);
@@ -37,7 +38,7 @@ function operate(start, operator, num) {
       div(num);
       break;
   }
-  return count1;
+  return result;
 }
 
 const container = document.createElement('div');
@@ -45,8 +46,8 @@ container.setAttribute('id', 'container');
 container.setAttribute('class', 'container');
 document.body.appendChild(container);
 
-const display = document.createElement('input');
-display.value = 0;
+const display = document.createElement('div');
+display.innerText = 0;
 display.setAttribute('id', 'display');
 display.setAttribute('class', 'display');
 container.appendChild(display);
@@ -172,41 +173,71 @@ addition.setAttribute('class', 'btn');
 row4.appendChild(addition);
 
 zero.addEventListener('click', () => {
-  display.value += 0;
+  display.innerText += 0;
 });
 
 one.addEventListener('click', () => {
-  display.value += 1;
+  display.innerText += 1;
 });
 
 two.addEventListener('click', () => {
-  display.value += 2;
+  display.innerText += 2;
 });
 
 three.addEventListener('click', () => {
-  display.value += 3;
+  display.innerText += 3;
 });
 
 four.addEventListener('click', () => {
-  display.value += 4;
+  display.innerText += 4;
 });
 
 five.addEventListener('click', () => {
-  display.value += 5;
+  display.innerText += 5;
 });
 
 six.addEventListener('click', () => {
-  display.value += 6;
+  display.innerText += 6;
 });
 
 seven.addEventListener('click', () => {
-  display.value += 7;
+  display.innerText += 7;
 });
 
 eight.addEventListener('click', () => {
-  display.value += 8;
+  display.innerText += 8;
 });
 
 nine.addEventListener('click', () => {
-  display.value += 9;
+  display.innerText += 9;
+});
+
+divide.addEventListener('click', () => {
+  operator = '/';
+  count1 = Number(display.innerText);
+  display.innerText = 0;
+});
+
+mult.addEventListener('click', () => {
+  operator = '*';
+  count1 = Number(display.innerText);
+  display.innerText = 0;
+});
+
+subtract.addEventListener('click', () => {
+  operator = '-';
+  count1 = Number(display.innerText);
+  display.innerText = 0;
+});
+//not working reading display as a string and concatenating
+addition.addEventListener('click', () => {
+  operator = '+';
+  count1 = Number(display.innerText);
+  display.innerText = 0;
+});
+
+equals.addEventListener('click', () => {
+  count2 = Number(display.innerText);
+  operate(count1, operator, count2);
+  display.innerText = result;
 });
